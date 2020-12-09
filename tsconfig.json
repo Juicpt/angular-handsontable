@@ -20,9 +20,12 @@
       "dom"
     ],
     "paths": {
-      "@handsontable/angular": [
+      "@juicpt/angular-handsontable": [
         "dist/hot-table"
       ]
     }
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
   }
 }

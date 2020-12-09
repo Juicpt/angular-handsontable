@@ -12,8 +12,8 @@ delete PACKAGE.dependencies;
 
 fse.writeJsonSync(PACKAGE_PATH, PACKAGE);
 
-const UMD_MIN_JS_PATH = path.resolve(`${DIST_PATH}/bundles/handsontable-angular.umd.min.js`);
-const UMD_JS_PATH = path.resolve(`${DIST_PATH}/bundles/handsontable-angular.umd.js`);
+const UMD_MIN_JS_PATH = path.resolve(`${DIST_PATH}/bundles/juicpt-angular-handsontable.umd.min.js`);
+const UMD_JS_PATH = path.resolve(`${DIST_PATH}/bundles/juicpt-angular-handsontable.umd.js`);
 let licenseBody = fse.readFileSync(path.resolve('./LICENSE'), { encoding: 'utf-8' });
 licenseBody += `\nVersion: ${PACKAGE.version} (built at ${new Date().toString()})`;
 const licenseBanner = `/*!\n${licenseBody.replace(/^/gm, ' * ')}\n */\n`;

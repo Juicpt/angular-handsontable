@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { HotTableModule, HotTableRegisterer } from '@handsontable/angular';
+import { HotTableModule, HotTableRegisterer } from '@juicpt/angular-handsontable';
 import * as Handsontable from 'handsontable';
 
 @Component({
@@ -22,7 +22,7 @@ export class TestComponent {
 describe('HotTableComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TestComponent ],
       imports: [ HotTableModule.forRoot() ],
