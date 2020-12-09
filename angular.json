@@ -14,6 +14,11 @@
           "options": {
             "tsConfig": "projects/hot-table/tsconfig.lib.json",
             "project": "projects/hot-table/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/hot-table/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {

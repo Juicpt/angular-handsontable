@@ -9,7 +9,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import Handsontable from 'handsontable';
+import * as Handsontable from 'handsontable';
 import { HotTableRegisterer } from './hot-table-registerer.service';
 import { HotSettingsResolver } from './hot-settings-resolver.service';
 import { HotColumnComponent } from './hot-column.component';
@@ -41,17 +41,14 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() autoRowSize: Handsontable.GridSettings['autoRowSize'];
   @Input() autoWrapCol: Handsontable.GridSettings['autoWrapCol'];
   @Input() autoWrapRow: Handsontable.GridSettings['autoWrapRow'];
-  @Input() bindRowsWithHeaders: Handsontable.GridSettings['bindRowsWithHeaders'];
   @Input() cell: Handsontable.GridSettings['cell'];
   @Input() cells: Handsontable.GridSettings['cells'];
   @Input() checkedTemplate: Handsontable.GridSettings['checkedTemplate'];
   @Input() className: Handsontable.GridSettings['className'];
   @Input() colHeaders: Handsontable.GridSettings['colHeaders'];
-  @Input() collapsibleColumns: Handsontable.GridSettings['collapsibleColumns'];
   @Input() columnHeaderHeight: Handsontable.GridSettings['columnHeaderHeight'];
   @Input() columns: Handsontable.GridSettings['columns'];
   @Input() columnSorting: Handsontable.GridSettings['columnSorting'];
-  @Input() columnSummary: Handsontable.GridSettings['columnSummary'];
   @Input() colWidths: Handsontable.GridSettings['colWidths'];
   @Input() commentedCellClassName: Handsontable.GridSettings['commentedCellClassName'];
   @Input() comments: Handsontable.GridSettings['comments'];
@@ -66,30 +63,24 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() data: Handsontable.GridSettings['data'];
   @Input() dataSchema: Handsontable.GridSettings['dataSchema'];
   @Input() dateFormat: Handsontable.GridSettings['dateFormat'];
+  @Input() debug: Handsontable.GridSettings['debug'];
   @Input() defaultDate: Handsontable.GridSettings['defaultDate'];
   @Input() disableVisualSelection: Handsontable.GridSettings['disableVisualSelection'];
   @Input() dragToScroll: Handsontable.GridSettings['dragToScroll'];
-  @Input() dropdownMenu: Handsontable.GridSettings['dropdownMenu'];
   @Input() editor: Handsontable.GridSettings['editor'];
   @Input() enterBeginsEditing: Handsontable.GridSettings['enterBeginsEditing'];
   @Input() enterMoves: Handsontable.GridSettings['enterMoves'];
   @Input() fillHandle: Handsontable.GridSettings['fillHandle'];
   @Input() filter: Handsontable.GridSettings['filter'];
   @Input() filteringCaseSensitive: Handsontable.GridSettings['filteringCaseSensitive'];
-  @Input() filters: Handsontable.GridSettings['filters'];
   @Input() fixedColumnsLeft: Handsontable.GridSettings['fixedColumnsLeft'];
   @Input() fixedRowsBottom: Handsontable.GridSettings['fixedRowsBottom'];
   @Input() fixedRowsTop: Handsontable.GridSettings['fixedRowsTop'];
-  @Input() formulas: Handsontable.GridSettings['formulas'];
   @Input() fragmentSelection: Handsontable.GridSettings['fragmentSelection'];
-  @Input() headerTooltips: Handsontable.GridSettings['headerTooltips'];
   @Input() height: Handsontable.GridSettings['height'];
-  @Input() hiddenColumns: Handsontable.GridSettings['hiddenColumns'];
-  @Input() hiddenRows: Handsontable.GridSettings['hiddenRows'];
   @Input() invalidCellClassName: Handsontable.GridSettings['invalidCellClassName'];
   @Input() label: Handsontable.GridSettings['label'];
   @Input() language: Handsontable.GridSettings['language'];
-  @Input() licenseKey: Handsontable.GridSettings['licenseKey'];
   @Input() manualColumnFreeze: Handsontable.GridSettings['manualColumnFreeze'];
   @Input() manualColumnMove: Handsontable.GridSettings['manualColumnMove'];
   @Input() manualColumnResize: Handsontable.GridSettings['manualColumnResize'];
@@ -102,9 +93,6 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() minRows: Handsontable.GridSettings['minRows'];
   @Input() minSpareCols: Handsontable.GridSettings['minSpareCols'];
   @Input() minSpareRows: Handsontable.GridSettings['minSpareRows'];
-  @Input() multiColumnSorting: Handsontable.GridSettings['multiColumnSorting'];
-  @Input() nestedHeaders: Handsontable.GridSettings['nestedHeaders'];
-  @Input() nestedRows: Handsontable.GridSettings['nestedRows'];
   @Input() noWordWrapClassName: Handsontable.GridSettings['noWordWrapClassName'];
   @Input() numericFormat: Handsontable.GridSettings['numericFormat'];
   @Input() observeChanges: Handsontable.GridSettings['observeChanges'];
@@ -114,7 +102,6 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() placeholder: Handsontable.GridSettings['placeholder'];
   @Input() placeholderCellClassName: Handsontable.GridSettings['placeholderCellClassName'];
   @Input() preventOverflow: Handsontable.GridSettings['preventOverflow'];
-  @Input() preventWheel: Handsontable.GridSettings['preventWheel'];
   @Input() readOnly: Handsontable.GridSettings['readOnly'];
   @Input() readOnlyCellClassName: Handsontable.GridSettings['readOnlyCellClassName'];
   @Input() renderAllRows: Handsontable.GridSettings['renderAllRows'];
@@ -126,7 +113,6 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() selectionMode: Handsontable.GridSettings['selectionMode'];
   @Input() selectOptions: Handsontable.GridSettings['selectOptions'];
   @Input() skipColumnOnPaste: Handsontable.GridSettings['skipColumnOnPaste'];
-  @Input() skipRowOnPaste: any;
   @Input() sortByRelevance: Handsontable.GridSettings['sortByRelevance'];
   @Input() source: Handsontable.GridSettings['source'];
   @Input() startCols: Handsontable.GridSettings['startCols'];
@@ -137,7 +123,6 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() tabMoves: Handsontable.GridSettings['tabMoves'];
   @Input() title: Handsontable.GridSettings['title'];
   @Input() trimDropdown: Handsontable.GridSettings['trimDropdown'];
-  @Input() trimRows: Handsontable.GridSettings['nestedRows'];
   @Input() trimWhitespace: Handsontable.GridSettings['trimWhitespace'];
   @Input() type: Handsontable.GridSettings['type'];
   @Input() uncheckedTemplate: Handsontable.GridSettings['uncheckedTemplate'];
@@ -148,16 +133,11 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() visibleRows: Handsontable.GridSettings['visibleRows'];
   @Input() width: Handsontable.GridSettings['width'];
   @Input() wordWrap: Handsontable.GridSettings['wordWrap'];
-
   // handsontable hooks
-  @Input() afterAddChild: Handsontable.GridSettings['afterAddChild'];
-  @Input() afterAutofill: Handsontable.GridSettings['afterAutofill'];
   @Input() afterBeginEditing: Handsontable.GridSettings['afterBeginEditing'];
   @Input() afterCellMetaReset: Handsontable.GridSettings['afterCellMetaReset'];
   @Input() afterChange: Handsontable.GridSettings['afterChange'];
   @Input() afterChangesObserved: Handsontable.GridSettings['afterChangesObserved'];
-  @Input() afterColumnCollapse: Handsontable.GridSettings['afterColumnCollapse'];
-  @Input() afterColumnExpand: Handsontable.GridSettings['afterColumnExpand'];
   @Input() afterColumnMove: Handsontable.GridSettings['afterColumnMove'];
   @Input() afterColumnResize: Handsontable.GridSettings['afterColumnResize'];
   @Input() afterColumnSort: Handsontable.GridSettings['afterColumnSort'];
@@ -171,20 +151,13 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() afterCut: Handsontable.GridSettings['afterCut'];
   @Input() afterDeselect: Handsontable.GridSettings['afterDeselect'];
   @Input() afterDestroy: Handsontable.GridSettings['afterDestroy'];
-  @Input() afterDetachChild: Handsontable.GridSettings['afterDetachChild'];
   @Input() afterDocumentKeyDown: Handsontable.GridSettings['afterDocumentKeyDown'];
   @Input() afterDrawSelection: Handsontable.GridSettings['afterDrawSelection'];
-  @Input() afterDropdownMenuDefaultOptions: Handsontable.GridSettings['afterDropdownMenuDefaultOptions'];
-  @Input() afterDropdownMenuHide: Handsontable.GridSettings['afterDropdownMenuHide'];
-  @Input() afterDropdownMenuShow: Handsontable.GridSettings['afterDropdownMenuShow'];
-  @Input() afterFilter: Handsontable.GridSettings['afterFilter'];
   @Input() afterGetCellMeta: Handsontable.GridSettings['afterGetCellMeta'];
   @Input() afterGetColHeader: Handsontable.GridSettings['afterGetColHeader'];
   @Input() afterGetColumnHeaderRenderers: Handsontable.GridSettings['afterGetColumnHeaderRenderers'];
   @Input() afterGetRowHeader: Handsontable.GridSettings['afterGetRowHeader'];
   @Input() afterGetRowHeaderRenderers: Handsontable.GridSettings['afterGetRowHeaderRenderers'];
-  @Input() afterHideColumns: Handsontable.GridSettings['afterHideColumns'];
-  @Input() afterHideRows: Handsontable.GridSettings['afterHideRows'];
   @Input() afterInit: Handsontable.GridSettings['afterInit'];
   @Input() afterLanguageChange: Handsontable.GridSettings['afterLanguageChange'];
   @Input() afterListen: Handsontable.GridSettings['afterListen'];
@@ -203,7 +176,6 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() afterPaste: Handsontable.GridSettings['afterPaste'];
   @Input() afterPluginsInitialized: Handsontable.GridSettings['afterPluginsInitialized'];
   @Input() afterRedo: Handsontable.GridSettings['afterRedo'];
-  @Input() afterRefreshDimensions: Handsontable.GridSettings['afterRefreshDimensions'];
   @Input() afterRemoveCellMeta: Handsontable.GridSettings['afterRemoveCellMeta'];
   @Input() afterRemoveCol: Handsontable.GridSettings['afterRemoveCol'];
   @Input() afterRemoveRow: Handsontable.GridSettings['afterRemoveRow'];
@@ -220,26 +192,18 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() afterSetCellMeta: Handsontable.GridSettings['afterSetCellMeta'];
   @Input() afterSetDataAtCell: Handsontable.GridSettings['afterSetDataAtCell'];
   @Input() afterSetDataAtRowProp: Handsontable.GridSettings['afterSetDataAtRowProp'];
-  @Input() afterSetSourceDataAtCell: Handsontable.GridSettings['afterSetSourceDataAtCell'];
-  @Input() afterTrimRow: Handsontable.GridSettings['afterTrimRow'];
   @Input() afterUndo: Handsontable.GridSettings['afterUndo'];
-  @Input() afterUnhideColumns: Handsontable.GridSettings['afterUnhideColumns'];
-  @Input() afterUnhideRows: Handsontable.GridSettings['afterUnhideRows'];
   @Input() afterUnlisten: Handsontable.GridSettings['afterUnlisten'];
   @Input() afterUnmergeCells: Handsontable.GridSettings['afterUnmergeCells'];
-  @Input() afterUntrimRow: Handsontable.GridSettings['afterUntrimRow'];
   @Input() afterUpdateSettings: Handsontable.GridSettings['afterUpdateSettings'];
   @Input() afterValidate: Handsontable.GridSettings['afterValidate'];
   @Input() afterViewportColumnCalculatorOverride: Handsontable.GridSettings['afterViewportColumnCalculatorOverride'];
   @Input() afterViewportRowCalculatorOverride: Handsontable.GridSettings['afterViewportRowCalculatorOverride'];
-  @Input() beforeAddChild: Handsontable.GridSettings['beforeAddChild'];
   @Input() beforeAutofill: Handsontable.GridSettings['beforeAutofill'];
   @Input() beforeAutofillInsidePopulate: Handsontable.GridSettings['beforeAutofillInsidePopulate'];
   @Input() beforeCellAlignment: Handsontable.GridSettings['beforeCellAlignment'];
   @Input() beforeChange: Handsontable.GridSettings['beforeChange'];
   @Input() beforeChangeRender: Handsontable.GridSettings['beforeChangeRender'];
-  @Input() beforeColumnCollapse: Handsontable.GridSettings['beforeColumnCollapse'];
-  @Input() beforeColumnExpand: Handsontable.GridSettings['beforeColumnExpand'];
   @Input() beforeColumnMove: Handsontable.GridSettings['beforeColumnMove'];
   @Input() beforeColumnResize: Handsontable.GridSettings['beforeColumnResize'];
   @Input() beforeColumnSort: Handsontable.GridSettings['beforeColumnSort'];
@@ -249,19 +213,12 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() beforeCreateCol: Handsontable.GridSettings['beforeCreateCol'];
   @Input() beforeCreateRow: Handsontable.GridSettings['beforeCreateRow'];
   @Input() beforeCut: Handsontable.GridSettings['beforeCut'];
-  @Input() beforeDetachChild: Handsontable.GridSettings['beforeDetachChild'];
   @Input() beforeDrawBorders: Handsontable.GridSettings['beforeDrawBorders'];
-  @Input() beforeDropdownMenuSetItems: Handsontable.GridSettings['beforeDropdownMenuSetItems'];
-  @Input() beforeDropdownMenuShow: Handsontable.GridSettings['beforeDropdownMenuShow'];
-  @Input() beforeFilter: Handsontable.GridSettings['beforeFilter'];
   @Input() beforeGetCellMeta: Handsontable.GridSettings['beforeGetCellMeta'];
-  @Input() beforeHideColumns: Handsontable.GridSettings['beforeHideColumns'];
-  @Input() beforeHideRows: Handsontable.GridSettings['beforeHideRows'];
   @Input() beforeInit: Handsontable.GridSettings['beforeInit'];
   @Input() beforeInitWalkontable: Handsontable.GridSettings['beforeInitWalkontable'];
   @Input() beforeKeyDown: Handsontable.GridSettings['beforeKeyDown'];
   @Input() beforeLanguageChange: Handsontable.GridSettings['beforeLanguageChange'];
-  @Input() beforeLoadData: Handsontable.GridSettings['beforeLoadData'];
   @Input() beforeMergeCells: Handsontable.GridSettings['beforeMergeCells'];
   @Input() beforeOnCellContextMenu: Handsontable.GridSettings['beforeOnCellContextMenu'];
   @Input() beforeOnCellMouseDown: Handsontable.GridSettings['beforeOnCellMouseDown'];
@@ -270,7 +227,6 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() beforeOnCellMouseUp: Handsontable.GridSettings['beforeOnCellMouseUp'];
   @Input() beforePaste: Handsontable.GridSettings['beforePaste'];
   @Input() beforeRedo: Handsontable.GridSettings['beforeRedo'];
-  @Input() beforeRefreshDimensions: Handsontable.GridSettings['beforeRefreshDimensions'];
   @Input() beforeRemoveCellClassNames: Handsontable.GridSettings['beforeRemoveCellClassNames'];
   @Input() beforeRemoveCellMeta: Handsontable.GridSettings['beforeRemoveCellMeta'];
   @Input() beforeRemoveCol: Handsontable.GridSettings['beforeRemoveCol'];
@@ -279,39 +235,39 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() beforeRenderer: Handsontable.GridSettings['beforeRenderer'];
   @Input() beforeRowMove: Handsontable.GridSettings['beforeRowMove'];
   @Input() beforeRowResize: Handsontable.GridSettings['beforeRowResize'];
-  @Input() beforeSetCellMeta: Handsontable.GridSettings['beforeSetCellMeta'];
   @Input() beforeSetRangeEnd: Handsontable.GridSettings['beforeSetRangeEnd'];
   @Input() beforeSetRangeStart: Handsontable.GridSettings['beforeSetRangeStart'];
   @Input() beforeSetRangeStartOnly: Handsontable.GridSettings['beforeSetRangeStartOnly'];
   @Input() beforeStretchingColumnWidth: Handsontable.GridSettings['beforeStretchingColumnWidth'];
   @Input() beforeTouchScroll: Handsontable.GridSettings['beforeTouchScroll'];
-  @Input() beforeTrimRow: Handsontable.GridSettings['beforeTrimRow'];
   @Input() beforeUndo: Handsontable.GridSettings['beforeUndo'];
-  @Input() beforeUnhideColumns: Handsontable.GridSettings['beforeUnhideColumns'];
-  @Input() beforeUnhideRows: Handsontable.GridSettings['beforeUnhideRows'];
   @Input() beforeUnmergeCells: Handsontable.GridSettings['beforeUnmergeCells'];
-  @Input() beforeUntrimRow: Handsontable.GridSettings['beforeUntrimRow'];
   @Input() beforeValidate: Handsontable.GridSettings['beforeValidate'];
   @Input() beforeValueRender: Handsontable.GridSettings['beforeValueRender'];
   @Input() construct: Handsontable.GridSettings['construct'];
   @Input() init: Handsontable.GridSettings['init'];
   @Input() modifyAutofillRange: Handsontable.GridSettings['modifyAutofillRange'];
+  @Input() modifyCol: Handsontable.GridSettings['modifyCol'];
   @Input() modifyColHeader: Handsontable.GridSettings['modifyColHeader'];
   @Input() modifyColumnHeaderHeight: Handsontable.GridSettings['modifyColumnHeaderHeight'];
   @Input() modifyColWidth: Handsontable.GridSettings['modifyColWidth'];
   @Input() modifyCopyableRange: Handsontable.GridSettings['modifyCopyableRange'];
   @Input() modifyData: Handsontable.GridSettings['modifyData'];
   @Input() modifyGetCellCoords: Handsontable.GridSettings['modifyGetCellCoords'];
+  @Input() modifyRow: Handsontable.GridSettings['modifyRow'];
   @Input() modifyRowData: Handsontable.GridSettings['modifyRowData'];
   @Input() modifyRowHeader: Handsontable.GridSettings['modifyRowHeader'];
   @Input() modifyRowHeaderWidth: Handsontable.GridSettings['modifyRowHeaderWidth'];
   @Input() modifyRowHeight: Handsontable.GridSettings['modifyRowHeight'];
-  @Input() modifySourceData: Handsontable.GridSettings['modifySourceData'];
+  @Input() modifyRowSourceData: Handsontable.GridSettings['modifyRowSourceData'];
   @Input() modifyTransformEnd: Handsontable.GridSettings['modifyTransformEnd'];
   @Input() modifyTransformStart: Handsontable.GridSettings['modifyTransformStart'];
   @Input() persistentStateLoad: Handsontable.GridSettings['persistentStateLoad'];
   @Input() persistentStateReset: Handsontable.GridSettings['persistentStateReset'];
   @Input() persistentStateSave: Handsontable.GridSettings['persistentStateSave'];
+  @Input() skipLengthCache: Handsontable.GridSettings['skipLengthCache'];
+  @Input() unmodifyCol: Handsontable.GridSettings['unmodifyCol'];
+  @Input() unmodifyRow: Handsontable.GridSettings['unmodifyRow'];
 
   constructor(
     private _ngZone: NgZone,
@@ -333,14 +289,12 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
 
     this._ngZone.runOutsideAngular(() => {
-      this.hotInstance = new Handsontable.Core(this.container.nativeElement, options);
-
-      if (this.hotId) {
-        this._hotTableRegisterer.registerInstance(this.hotId, this.hotInstance);
-      }
-      // @ts-ignore
-      this.hotInstance.init();
+      this.hotInstance = new Handsontable(this.container.nativeElement, options);
     });
+
+    if (this.hotId) {
+      this._hotTableRegisterer.registerInstance(this.hotId, this.hotInstance);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -363,7 +317,7 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
   }
 
-  updateHotTable(newSettings: Handsontable.GridSettings ): void {
+  updateHotTable(newSettings: Handsontable.GridSettings): void {
     if (!this.hotInstance) {
       return;
     }
@@ -379,7 +333,7 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
 
     if (this.columnsComponents.length > 0) {
-      const columns: Handsontable.ColumnSettings[] = [];
+      const columns: Handsontable.GridSettings[] = [];
 
       this.columnsComponents.forEach((column) => {
         columns.push(this._hotSettingsResolver.mergeSettings(column));
@@ -394,7 +348,7 @@ export class HotTableComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   onAfterColumnsNumberChange(): void {
-    const columns: Handsontable.ColumnSettings[] = [];
+    const columns: Handsontable.GridSettings[] = [];
 
     if (this.columnsComponents.length > 0) {
       this.columnsComponents.forEach((column) => {
